@@ -4,6 +4,9 @@ const taskFormEl = document.getElementById('task-form')
 
 let isModalDisplay = false
 
+const task = []
+
+
 addTaskBtn.addEventListener('click', function(e){
     e.stopPropagation() // prevents this click from reaching document
     modalContainerEl.style.display = 'block'
@@ -48,11 +51,31 @@ document.addEventListener('DOMContentLoaded', function () {
 taskFormEl.addEventListener('submit', function(e){
     e.preventDefault()
 
+
     if(isModalDisplay){
         modalContainerEl.style.display = 'none'
         isModalDisplay = false
     }
-    console.log(e.target)
+
+    const formTitle = document.getElementById('modal-task-title').value
+    let formDetail = document.getElementById('modal-description').value
+    const formDate = document.getElementById('dob').value
+
+    if(formDetail === ''){
+        formDetail = 'Empty'
+    }
+ 
+    const newTask = {
+        title: formTitle,
+        description: formDetail,
+        date: formDate,
+    }
+
+    task.push(newTask)
+
     taskFormEl.reset()
 
+    console.log(task)
+
 })
+
