@@ -1,12 +1,25 @@
 const modalContainerEl = document.querySelector('.modal-container')
 const addTaskBtn = document.getElementById('add-task-btn')
+const taskFormEl = document.getElementById('task-form')
 
-console.log(modalContainerEl)
+let isModalDisplay = false
 
-addTaskBtn.addEventListener('click', function(){
-    modalContainerEl.style.display = 'block';
+addTaskBtn.addEventListener('click', function(e){
+    e.stopPropagation() // prevents this click from reaching document
+    modalContainerEl.style.display = 'block'
+    isModalDisplay = true
 })
 
+modalContainerEl.addEventListener('click', function(e){
+    e.stopPropagation() // clicking inside modal should not close it
+})
+
+document.addEventListener('click', function(){
+    if(isModalDisplay){
+        modalContainerEl.style.display = 'none'
+        isModalDisplay = false
+    }
+})
 
 // Initialize Flatpickr for the input field
 document.addEventListener('DOMContentLoaded', function () {
@@ -28,3 +41,18 @@ document.addEventListener('DOMContentLoaded', function () {
         datepicker.open();
     });
 });
+
+
+//submit form functionality
+
+taskFormEl.addEventListener('submit', function(e){
+    e.preventDefault()
+
+    if(isModalDisplay){
+        modalContainerEl.style.display = 'none'
+        isModalDisplay = false
+    }
+    console.log(e.target)
+    taskFormEl.reset()
+
+})

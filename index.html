@@ -26,16 +26,16 @@
                     <label for="add-btn-container">Add Task</label>
                     <button class="add-task-btn" id="add-task-btn">Add</button>
                 </div>
-
+                <form id="task-form">
                 <div class="whole-modal-container">
                     <div class="modal-container">
                       <div class="modal-task-title-container">
-                          <label for="modal-task-title">Task Title</label>
-                          <input class="modal-task-title" id="modal-task-title" type="text" required>
+                          <label for="modal-task-title" class="modal-task-text">Task Title</label>
+                          <input class="modal-task-title" id="modal-task-title" type="text" placeholder="Schedule Call" required>
                       </div>
                         <div class="modal-description-container">
                           <label for="modal-description" class="modal-description-title">Task Description</label>
-                          <textarea class="modal-description" id="modal-description" placeholder="Need to Schedule call"></textarea>
+                          <textarea class="modal-description" id="modal-description" placeholder="Need to Schedule call with Nancy at 5pm"></textarea>
                         </div>
 
                         <!--Calendar Area-->
@@ -58,13 +58,17 @@
                                   <!-- Input field for the date -->
                                   <input class="form-control" dddd
                                          type="text" id="dob" 
-                                         placeholder="Select date">
+                                         placeholder="Select date" required>
                               </div>
                           </div>
+                      </div>
+                      <div class="submit-form-container">
+                        <button type="submit" class="form-submit-btn" id="form-submit-btn">Create</button>
                       </div>
                     </div>
               
                 </div>
+                </form>
 
                 <div class="tasks-container">
                     <div class="to-do-container" id="to-do-container">

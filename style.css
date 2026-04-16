@@ -2,6 +2,9 @@
     text-align: center;
 }
 
+
+
+
 .add-btn-container{
     text-align: center;
 }
@@ -11,13 +14,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: grey;
 
 }
 
 .modal-container{
     position: fixed;
-    background-color: grey;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
     height: auto;
     margin: auto 30px;
     bottom: 100px;
@@ -29,6 +33,10 @@
 
 .modal-task-title-container{
     margin-top: 25px;
+}
+
+.modal-task-text{
+    font-weight: bolder;
 }
 
 .modal-description-container{
