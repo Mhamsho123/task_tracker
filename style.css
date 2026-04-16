@@ -1,6 +1,9 @@
-body{
+.heading-container{
     text-align: center;
+}
 
+.add-btn-container{
+    text-align: center;
 }
 
 .whole-modal-container{

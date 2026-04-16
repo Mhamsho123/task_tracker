@@ -3,6 +3,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Task Manager Project</title>
   </head>
   <body>
@@ -17,20 +22,45 @@
         <div>
             <div>
 
-                <div>
+                <div class="add-btn-container">
                     <label for="add-btn-container">Add Task</label>
                     <button class="add-task-btn" id="add-task-btn">Add</button>
                 </div>
 
                 <div class="whole-modal-container">
                     <div class="modal-container">
-                        <label for="modal-task-title">Task Title</label>
-                        <input class="modal-task-title" id="modal-task-title" type="text" required>
+                          <label for="modal-task-title">Task Title</label>
+                          <input class="modal-task-title" id="modal-task-title" type="text" required>
                         <div>
-                        <label for="modal-description">Task Description</label>
-                        <textarea class="modal-description" id="modal-description" placeholder="Need to Schedule call"></textarea>
+                          <label for="modal-description">Task Description</label>
+                          <textarea class="modal-description" id="modal-description" placeholder="Need to Schedule call"></textarea>
                         </div>
+                        <!--Calendar Area-->
+                        <div class="container" style="max-width: 250px;">
+                          <div class="form-group m-1">
+                              <label class="font-weight-bold" for="dob">
+                                  Choose due date:
+                              </label>
+                  
+                              <!-- Input field along with calendar icon -->
+                              <div class="input-group">
+                                  <!-- Calendar icon -->
+                                  <span class="input-group-prepend">
+                                      <span class="input-group-text">
+                                          <i class="fa fa-calendar" 
+                                             id="calendar-icon"></i>
+                                      </span>
+                                  </span>
+                  
+                                  <!-- Input field for the date -->
+                                  <input class="form-control" dddd
+                                         type="text" id="dob" 
+                                         placeholder="Select date">
+                              </div>
+                          </div>
+                      </div>
                     </div>
+              
                 </div>
 
                 <div class="tasks-container">
@@ -43,6 +73,7 @@
 
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="index.js" type="module"></script>
   </body>
 </html>
