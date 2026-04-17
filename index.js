@@ -1,10 +1,11 @@
 const modalContainerEl = document.querySelector('.modal-container')
 const addTaskBtn = document.getElementById('add-task-btn')
 const taskFormEl = document.getElementById('task-form')
+const toDoEl = document.getElementById('to-do')
 
 let isModalDisplay = false
 
-const task = []
+const tasks = []
 
 
 addTaskBtn.addEventListener('click', function(e){
@@ -57,9 +58,9 @@ taskFormEl.addEventListener('submit', function(e){
         isModalDisplay = false
     }
 
-    const formTitle = document.getElementById('modal-task-title').value
-    let formDetail = document.getElementById('modal-description').value
-    const formDate = document.getElementById('dob').value
+    const formTitle = document.getElementById('modal-task-title').value()
+    let formDetail = document.getElementById('modal-description').value()
+    const formDate = document.getElementById('dob').value.trim()
 
     if(formDetail === ''){
         formDetail = 'Empty'
@@ -71,13 +72,34 @@ taskFormEl.addEventListener('submit', function(e){
         date: formDate,
     }
 
-    task.push(newTask)
+    tasks.push(newTask)
 
     taskFormEl.reset()
 
-    console.log(task)
+    console.log(tasks)
+
+    renderTasks()
 
 })
 
 
+
+
+
+function renderTasks(){
+    let html = ""
+
+    tasks.forEach(function(task){
+        html += `
+        <div class="rendered-to-do">
+            <h2>${task.title}/<h2>
+            <h4>${task.description}</h4>
+            <h4>${task.date}</h4>
+        </div>
+        `
+    })
+    console.log(toDoEl)
+    toDoEl.innerHTML = html
+
+}
 

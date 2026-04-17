@@ -67,3 +67,10 @@
 }
 
 
+.rendered-to-do{
+    margin: auto 10%;
+    height: 30%;
+    border: 1px solid black;
+    border-radius: 5px;
+
+}
