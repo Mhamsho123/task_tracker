@@ -58,8 +58,8 @@ taskFormEl.addEventListener('submit', function(e){
         isModalDisplay = false
     }
 
-    const formTitle = document.getElementById('modal-task-title').value()
-    let formDetail = document.getElementById('modal-description').value()
+    const formTitle = document.getElementById('modal-task-title').value.trim()
+    let formDetail = document.getElementById('modal-description').value.trim()
     const formDate = document.getElementById('dob').value.trim()
 
     if(formDetail === ''){
