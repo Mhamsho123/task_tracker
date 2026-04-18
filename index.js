@@ -5,7 +5,7 @@ const toDoEl = document.getElementById('to-do')
 
 let isModalDisplay = false
 
-const tasks = []
+let tasks = []
 
 
 addTaskBtn.addEventListener('click', function(e){
@@ -52,6 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
 taskFormEl.addEventListener('submit', function(e){
     e.preventDefault()
 
+    const uuid = Math.floor(Math.random() * 1000)+1
+
 
     if(isModalDisplay){
         modalContainerEl.style.display = 'none'
@@ -70,6 +72,7 @@ taskFormEl.addEventListener('submit', function(e){
         title: formTitle,
         description: formDetail,
         date: formDate,
+        uuid: uuid
     }
 
     tasks.push(newTask)
@@ -89,17 +92,35 @@ taskFormEl.addEventListener('submit', function(e){
 function renderTasks(){
     let html = ""
 
+
+
     tasks.forEach(function(task){
         html += `
-        <div class="rendered-to-do">
+        <div class="rendered-to-do" id="${task.uuid}">
             <h2>${task.title}/<h2>
             <h4>${task.description}</h4>
             <h4>${task.date}</h4>
+            <div>
+                <button data-delete="${task.uuid}">Delete</button>
+            </div>
         </div>
         `
     })
-    console.log(toDoEl)
+    console.log(html)
     toDoEl.innerHTML = html
 
 }
+
+
+document.addEventListener('click', function(e){
+    const taskUuid = e.target.dataset.delete
+
+    if(taskUuid){
+        tasks = tasks.filter(function(task){
+            return task.uuid != taskUuid
+        })
+    renderTasks()
+    }
+    console.log(tasks)
+})
 
