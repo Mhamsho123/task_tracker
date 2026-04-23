@@ -4,6 +4,7 @@ const taskFormEl = document.getElementById('task-form')
 const toDoEl = document.getElementById('to-do')
 
 let isModalDisplay = false
+let editTaskId = null
 
 let tasks = []
 
@@ -67,15 +68,28 @@ taskFormEl.addEventListener('submit', function(e){
     if(formDetail === ''){
         formDetail = 'Empty'
     }
- 
-    const newTask = {
-        title: formTitle,
-        description: formDetail,
-        date: formDate,
-        uuid: uuid
-    }
 
-    tasks.push(newTask)
+    if(editTaskId != null){
+        const taskToEdit = tasks.find(function(task){
+            return task.uuid == editTaskId
+        })
+
+        taskToEdit.title = formTitle
+        taskToEdit.description = formDetail
+        taskToEdit.date = formDate
+
+        editTaskId = null
+
+    }else{
+        const uuid = Math.floor(Math.random() * 1000)+1
+        const newTask = {
+            title: formTitle,
+            description: formDetail,
+            date: formDate,
+            uuid: uuid
+        }
+        tasks.push(newTask)
+    }
 
     taskFormEl.reset()
 
@@ -102,6 +116,7 @@ function renderTasks(){
             <h4>${task.date}</h4>
             <div>
                 <button data-delete="${task.uuid}">Delete</button>
+                <button data-edit="${task.uuid}">Edit</button>
             </div>
         </div>
         `
@@ -114,13 +129,27 @@ function renderTasks(){
 
 document.addEventListener('click', function(e){
     const taskUuid = e.target.dataset.delete
+    const taskUuidEdit = e.target.dataset.edit
 
     if(taskUuid){
         tasks = tasks.filter(function(task){
             return task.uuid != taskUuid
         })
-    renderTasks()
+        renderTasks()
     }
-    console.log(tasks)
-})
 
+    if(taskUuidEdit){
+        const taskToEdit = tasks.find(function(task){
+            return task.uuid == taskUuidEdit
+        })
+
+        document.getElementById('modal-task-title').value = taskToEdit.title
+        document.getElementById('modal-description').value = taskToEdit.description
+        document.getElementById('dob').value = taskToEdit.date
+
+        modalContainerEl.style.display = 'block'
+        isModalDisplay = true
+
+        editTaskId = taskToEdit.uuid
+    }
+})
