@@ -105,7 +105,7 @@ function renderTasks(){
     tasks.forEach(function(task){
         html += `
         <div class="rendered-to-do" id="${task.uuid}">
-            <h2>${task.title}/<h2>
+            <h2>${task.title}</h2>
             <h4>${task.description}</h4>
             <h4>${task.date}</h4>
             <div>

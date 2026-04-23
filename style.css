@@ -1,76 +1,280 @@
-.heading-container{
-    text-align: center;
+* {
+    box-sizing: border-box;
 }
 
-
-
-
-.add-btn-container{
-    text-align: center;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+    color: #1f2937;
 }
 
-.whole-modal-container{
+.heading-container {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.heading-title {
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+.heading-details {
+    margin-top: 0;
+    font-weight: 400;
+    color: #6b7280;
+}
+
+.add-btn-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.add-btn-container label {
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.add-task-btn {
+    border: none;
+    background-color: #111827;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.add-task-btn:hover {
+    background-color: #1f2937;
+    transform: translateY(-1px);
+}
+
+.whole-modal-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
-.modal-container{
+.modal-container {
     position: fixed;
     background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    height: auto;
-    margin: auto 30px;
-    bottom: 100px;
-    top: 100px;
-    width: 50%;
+    border: 1px solid #d1d5db;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 600px;
+    padding: 28px 24px 24px;
     text-align: center;
     display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    z-index: 1000;
 }
 
-.modal-task-title-container{
-    margin-top: 25px;
-}
-
-.modal-task-text{
-    font-weight: bolder;
-}
-
-.modal-description-container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 450px;
-    margin: 20px auto 0 auto; /* centers the whole block */
-}
-
-.modal-description-title{
-    margin-bottom: 5px;
-    font-weight: bold;
+.modal-task-title-container {
+    margin-top: 5px;
+    margin-bottom: 20px;
     text-align: left;
 }
 
-.modal-description{
-    resize: none;
+.modal-task-text {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.modal-task-title {
     width: 100%;
-    height: 100px;
-    box-sizing: border-box;
-}
-.to-do-container{
-    margin: auto 30%;
-    height: 50%;
-    border: 1px solid black;
-    border-radius: 5px;
+    max-width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
 }
 
+.modal-task-title:focus,
+.modal-description:focus,
+#dob:focus {
+    border-color: #111827;
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
+}
 
-.rendered-to-do{
-    margin: auto 10%;
-    height: 30%;
-    border: 1px solid black;
-    border-radius: 5px;
+.modal-description-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto 18px auto;
+    text-align: left;
+}
 
+.modal-description-title {
+    margin-bottom: 6px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.modal-description {
+    resize: vertical;
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.container {
+    max-width: 100% !important;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.input-group-text {
+    background-color: #f3f4f6;
+    border: 1px solid #cbd5e1;
+}
+
+#calendar-icon {
+    cursor: pointer;
+}
+
+#dob {
+    border: 1px solid #cbd5e1;
+}
+
+.submit-form-container {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.form-submit-btn {
+    border: none;
+    background-color: #2563eb;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.form-submit-btn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.tasks-container {
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+
+.to-do-container {
+    width: 90%;
+    max-width: 850px;
+    margin: 0 auto;
+    min-height: 200px;
+    border: 1px solid #d1d5db;
+    border-radius: 14px;
+    background-color: white;
+    padding: 20px 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.to-do {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.rendered-to-do {
+    margin: 0 20px;
+    padding: 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background-color: #f9fafb;
+    text-align: left;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.rendered-to-do h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.rendered-to-do h4 {
+    margin: 6px 0;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.rendered-to-do div:last-child {
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+}
+
+.rendered-to-do button {
+    border: none;
+    padding: 9px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.rendered-to-do button[data-delete] {
+    background-color: #ef4444;
+    color: white;
+}
+
+.rendered-to-do button[data-delete]:hover {
+    background-color: #dc2626;
+}
+
+.rendered-to-do button[data-edit] {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.rendered-to-do button[data-edit]:hover {
+    background-color: #d97706;
+}
+
+@media (max-width: 768px) {
+    .heading-title {
+        font-size: 1.8rem;
+    }
+
+    .heading-details {
+        font-size: 1rem;
+        padding: 0 16px;
+    }
+
+    .modal-container {
+        width: 94%;
+        padding: 22px 16px;
+    }
+
+    .rendered-to-do {
+        margin: 0 12px;
+    }
+
+    .rendered-to-do div:last-child {
+        flex-direction: column;
+    }
+
+    .rendered-to-do button {
+        width: 100%;
+    }
 }
