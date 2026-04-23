@@ -19,13 +19,14 @@ modalContainerEl.addEventListener('click', function(e){
     e.stopPropagation() // clicking inside modal should not close it
 })
 
-document.addEventListener('click', function(){
-    if(isModalDisplay){
-        modalContainerEl.style.display = 'none'
-        isModalDisplay = false
-    }
-})
+document.addEventListener('click', modalClose)
 
+    function modalClose(){
+        if(isModalDisplay){
+            modalContainerEl.style.display = 'none'
+            isModalDisplay = false
+        }
+    }
 // Initialize Flatpickr for the input field
 document.addEventListener('DOMContentLoaded', function () {
     const dobField = document.getElementById('dob');
@@ -52,14 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 taskFormEl.addEventListener('submit', function(e){
     e.preventDefault()
-
-    const uuid = Math.floor(Math.random() * 1000)+1
-
-
-    if(isModalDisplay){
-        modalContainerEl.style.display = 'none'
-        isModalDisplay = false
-    }
+    modalClose()
 
     const formTitle = document.getElementById('modal-task-title').value.trim()
     let formDetail = document.getElementById('modal-description').value.trim()
